@@ -1,52 +1,62 @@
 #include <iostream>
 using namespace std;
 
-// Function untuk menghitung tarif parkir
+
 int hitungTarif(int jenis, int jam) {
     int tarifPerJam;
-    if (jenis == 1) {
+
+    if (jenis == 1) {            
         tarifPerJam = 2000;
-    } else if (jenis == 2) {
+    } else if (jenis == 2) {     
         tarifPerJam = 5000;
     } else {
-		cout << "Jenis kendaraan tidak dikenal!" << endl;
+        cout << "Jenis kendaraan tidak dikenal!" << endl;
         return 0;
-	}
+    }
+
     return tarifPerJam * jam;
 }
 
 int main() {
+
+    cout << "===================================" << endl;
+    cout << "          SELAMAT DATANG DI        " << endl;
+    cout << "   PROGRAM PERHITUNGAN BIAYA PARKIR" << endl;
+    cout << "===================================" << endl << endl  << endl;
+
     int n;
     cout << "Masukkan jumlah kendaraan: ";
     cin >> n;
 
     int total = 0;
 
-    // Menggunakan for loop untuk input beberapa kendaraan
+    
     for (int i = 1; i <= n; i++) {
-        int jenis;
-        int jam;
+        int jenis, jam;
 
         cout << "\nKendaraan ke-" << i << endl;
-        cout << "Jenis kendaraan (1. motor/2. mobil): ";
+        cout << "Jenis kendaraan (1. Motor / 2. Mobil): ";
         cin >> jenis;
         cout << "Lama parkir (jam): ";
         cin >> jam;
 
         int biaya = hitungTarif(jenis, jam);
+
         
-         if(jam > 24 && jenis == 1) {
-        cout << "Total biaya : RP. 40000" << endl;
-   		} else if (jam > 24 && jenis == 2){
-    	cout << "Total biaya : Rp. 100000" << endl;
-    	} else {
-    		cout << "Biaya parkir: Rp. " << biaya << endl;
-		}
-        
+        if (jam > 24 && jenis == 1) {
+            biaya = 40000;
+            cout << "Biaya parkir (lebih dari 24 jam): Rp. " << biaya << endl;
+        } else if (jam > 24 && jenis == 2) {
+            biaya = 100000;
+            cout << "Biaya parkir (lebih dari 24 jam): Rp. " << biaya << endl;
+        } else {
+            cout << "Biaya parkir: Rp. " << biaya << endl;
+        }
+
         total += biaya;
     }
 
-    cout << "\nTotal semua biaya parkir: Rp. " << total << endl;
+    cout << "Total semua biaya parkir: Rp. " << total << endl;
 
     return 0;
 }
